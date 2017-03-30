@@ -7,25 +7,23 @@ const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 const removeItemButton = document.querySelector('button.removeItemButton');
 
-listDiv.addEventListener('mouseover', (event) => {
+listDiv.addEventListener('click', (event) => {
   if (event.target.tagName == 'LI') {
-    event.target.textContent = event.target.textContent.toUpperCase();
+    let li = event.target;
+    let ul = li.parentNode;
+    ul.removeChild(li);
   }
 });
-listDiv.addEventListener('mouseout', (event) => {
-  if (event.target.tagName == 'LI') {
-    event.target.textContent = event.target.textContent.toLowerCase();
-  }
-});
+
 
 toggleList.addEventListener('click', () => {
   if (listDiv.style.display == 'none') {
     toggleList.textContent = 'Hide list';
     listDiv.style.display = 'block';
   } else {
-    toggleList.textContent = 'Show list';                        
+    toggleList.textContent = 'Show list';
     listDiv.style.display = 'none';
-  }                         
+  }
 });
 
 descriptionButton.addEventListener('click', () => {
@@ -40,13 +38,9 @@ addItemButton.addEventListener('click', () => {
   ul.appendChild(li);
   addItemInput.value = '';
 });
-  
+
 removeItemButton.addEventListener('click', () => {
   let ul = document.getElementsByTagName('ul')[0];
   let li = document.querySelector('li:last-child');
   ul.removeChild(li);
 });
-  
-  
-  
-  
